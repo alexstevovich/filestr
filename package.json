@@ -1,0 +1,61 @@
+{
+    "name": "filemerge",
+    "version": "1.0.0",
+    "description": "A file merge function which takes a list of file paths and merges them into a single string.",
+    "exports": {
+        "import": "./src/index.js",
+        "require": "./gen/index.cjs"
+    },
+    "type": "module",
+    "types": "index.d.ts",
+    "files": [
+        "./src/",
+        "./gen"
+    ],
+    "main": "./gen/index.cjs",
+    "scripts": {
+        "test": "vitest",
+        "preamble": "preamble --apply --dir ./src/",
+        "zord": "filezord --zord --dir ./ --id pkg:filemerge",
+        "pretty": "npx prettier --write .",
+        "lint": "eslint ./src/",
+        "lint:fix": "eslint --fix ./src/",
+        "build": "npm run pretty && npm run lint:fix && node build.js && preamble --apply --dir ./gen/  && npm run zord"
+    },
+    "license": "Apache-2.0",
+    "author": {
+        "name": "Alex Stevovich",
+        "email": "alex.stevovich@gmail.com",
+        "url": "https://alexstevovich.com"
+    },
+    "keywords": [
+        "file system",
+        "fs",
+        "glob",
+        "file scanning",
+        "directory traversal",
+        "file paths",
+        "path utilities",
+        "semantic file handling",
+        "fast-glob",
+        "node.js fs",
+        "recursive file search",
+        "file listing",
+        "file discovery",
+        "file management",
+        "node.js utilities"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alexstevovich/filemerge.git"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.22.0",
+        "eslint": "^9.21.0",
+        "eslint-plugin-prettier": "^5.2.3",
+        "markdownlint": "^0.37.4",
+        "markdownlint-cli": "^0.44.0",
+        "prettier": "^3.5.3",
+        "vitest": "^3.0.8"
+    }
+}
