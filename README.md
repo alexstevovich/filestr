@@ -1,6 +1,6 @@
 # filestr
 
-An atomic file merge function which takes a list of file paths and merges them into a single string.
+Takes a list of files and combines their content into a single string. A minimal and atomic function.
 
 ## Install
 

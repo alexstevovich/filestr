@@ -1,7 +1,7 @@
 {
     "name": "filestr",
     "version": "1.0.0",
-    "description": "A file merge function which takes a list of file paths and merges them into a single string.",
+    "description": "Takes a list of files and combines their content into a single string.",
     "exports": {
         "import": "./src/index.js",
         "require": "./gen/index.cjs"
@@ -29,21 +29,25 @@
         "url": "https://alexstevovich.com"
     },
     "keywords": [
-        "file system",
+        "file",
+        "merge",
+        "concatenate",
+        "read files",
+        "file content",
+        "stringify files",
+        "file to string",
+        "text merge",
+        "file join",
         "fs",
-        "glob",
-        "file scanning",
-        "directory traversal",
-        "file paths",
-        "path utilities",
-        "semantic file handling",
-        "fast-glob",
-        "node.js fs",
-        "recursive file search",
-        "file listing",
-        "file discovery",
-        "file management",
-        "node.js utilities"
+        "filesystem",
+        "node.js",
+        "node",
+        "async file merge",
+        "bulk file read",
+        "batch file processing",
+        "fast file reading",
+        "stream file merge",
+        "parallel file read"
     ],
     "repository": {
         "type": "git",
