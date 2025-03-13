@@ -1,17 +1,17 @@
-# filemerge
+# filestr
 
 An atomic file merge function which takes a list of file paths and merges them into a single string.
 
 ## Install
 
 ```bash
-npm install filemerge
+npm install filestr
 ```
 
 ## Usage
 
 ```js
-import merge from 'filemerge';
+import merge from 'filestr';
 
 const files = [
     './test/res/test1.txt',
@@ -48,9 +48,9 @@ A `Promise<string>` containing the merged file content.
 
 ### Development Homepage:
 
-[https://github.com/alexstevovich/filemerge](https://github.com/alexstevovich/filemerge)
+[https://github.com/alexstevovich/filestr](https://github.com/alexstevovich/filestr)
 
-_This link might become filemerge-node in the future._
+_This link might become filestr-node in the future._
 
 ## License
 

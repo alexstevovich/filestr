@@ -1,5 +1,5 @@
 /* *******************************************************
- * filemerge
+ * filestr
  * 
  * @license
  * 
@@ -21,18 +21,18 @@
  * 
  * @meta
  *
- * package_name: filemerge
+ * package_name: filestr
  * file_name: gen/index.cjs
  * purpose: {{PURPOSE}}
  *  
  * @system
  *
- * generated_on: 2025-03-13T00:10:52.802Z
+ * generated_on: 2025-03-13T00:25:53.179Z
  * certified_version: 1.0.0
- * file_uuid: 28ce218d-5620-4472-9dd0-6e5ef5366c09
+ * file_uuid: 19f18678-a2c0-454e-b978-401ee5b0e21d
  * file_size: 4107 bytes
  * file_hash: 05a33337daeaf19d4d04349c11d6b86a6e0b09273c8344691b88cfd10a3a684c
- * mast_hash: 0b48a66518bf725fcc8b0ce14a9962ce6520fa02cb7af929d3c3b0d1d8b74f30
+ * mast_hash: 5758b9256ed74c7dd4fb5a65fc5e964c2e9efc5ffc8f48e8e7d432d8dc4080c5
  * generated_by: preamble on npm!
  *
  * [Preamble Metadata]
