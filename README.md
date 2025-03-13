@@ -1,6 +1,6 @@
 # filestr
 
-Takes a list of files and combines their content into a single string. A minimal and atomic function.
+Takes a list of files and combines their contents into a single string. A minimal and atomic function.
 
 ## Install
 
