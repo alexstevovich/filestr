@@ -7,7 +7,7 @@ function formatDelineator(template, filePath) {
         .replace(/{{PATH_ABS}}/g, path.resolve(filePath));
 }
 
-async function mergeSequential(paths, encoding, delineator) {
+async function fileStrSequential(paths, encoding, delineator) {
     let mergedContent = '';
 
     for (const fullPath of paths) {
@@ -27,7 +27,7 @@ async function mergeSequential(paths, encoding, delineator) {
     return mergedContent;
 }
 
-async function mergeParallelOrdered(paths, encoding, delineator) {
+async function fileStrParallelOrdered(paths, encoding, delineator) {
     const tasks = paths.map((fullPath, index) =>
         fs
             .readFile(fullPath, encoding)
@@ -51,7 +51,7 @@ async function mergeParallelOrdered(paths, encoding, delineator) {
         .join('');
 }
 
-async function mergeParallelUnordered(paths, encoding, delineator) {
+async function fileStrParallelUnordered(paths, encoding, delineator) {
     const results = await Promise.all(
         paths.map(async (fullPath) => {
             const content = await fs
@@ -81,7 +81,7 @@ const Concurrency = {
     PARALLEL_ORDERED: 'parallel-ordered',
 };
 
-async function merge(
+async function fileStr(
     paths,
     {
         encoding = 'utf8',
@@ -90,14 +90,14 @@ async function merge(
     } = {},
 ) {
     if (concurrency === Concurrency.PARALLEL_ORDERED) {
-        return mergeParallelOrdered(paths, encoding, delineator);
+        return fileStrParallelOrdered(paths, encoding, delineator);
     } else if (concurrency === Concurrency.PARALLEL) {
-        return mergeParallelUnordered(paths, encoding, delineator);
+        return fileStrParallelUnordered(paths, encoding, delineator);
     } else {
-        return mergeSequential(paths, encoding, delineator);
+        return fileStrSequential(paths, encoding, delineator);
     }
 }
 
-export { merge, Concurrency };
+export { fileStr, Concurrency };
 
-export default merge;
+export default fileStr;

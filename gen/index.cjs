@@ -27,12 +27,12 @@
  *  
  * @system
  *
- * generated_on: 2025-03-13T00:25:53.179Z
+ * generated_on: 2025-03-13T00:34:51.125Z
  * certified_version: 1.0.0
- * file_uuid: 19f18678-a2c0-454e-b978-401ee5b0e21d
- * file_size: 4107 bytes
- * file_hash: 05a33337daeaf19d4d04349c11d6b86a6e0b09273c8344691b88cfd10a3a684c
- * mast_hash: 5758b9256ed74c7dd4fb5a65fc5e964c2e9efc5ffc8f48e8e7d432d8dc4080c5
+ * file_uuid: e6d961c1-01ae-45c3-8526-6958bfc871d6
+ * file_size: 4129 bytes
+ * file_hash: 55f0e48484e474c2ee9d9cf6ee321ece6f04d202ec8452ef41d96e0ce4bdb984
+ * mast_hash: 1d1f6554dc8323c644be2f3963160efe6dcc2a277e81cf15a339d671bb8b8609
  * generated_by: preamble on npm!
  *
  * [Preamble Metadata]
@@ -68,7 +68,7 @@ var index_exports = {};
 __export(index_exports, {
   Concurrency: () => Concurrency,
   default: () => index_default,
-  merge: () => merge
+  fileStr: () => fileStr
 });
 module.exports = __toCommonJS(index_exports);
 var import_promises = __toESM(require("fs/promises"), 1);
@@ -76,7 +76,7 @@ var import_path = __toESM(require("path"), 1);
 function formatDelineator(template, filePath) {
   return template.replace(/{{PATH}}/g, filePath).replace(/{{PATH_ABS}}/g, import_path.default.resolve(filePath));
 }
-async function mergeSequential(paths, encoding, delineator) {
+async function fileStrSequential(paths, encoding, delineator) {
   let mergedContent = "";
   for (const fullPath of paths) {
     if (delineator) {
@@ -91,7 +91,7 @@ async function mergeSequential(paths, encoding, delineator) {
   }
   return mergedContent;
 }
-async function mergeParallelOrdered(paths, encoding, delineator) {
+async function fileStrParallelOrdered(paths, encoding, delineator) {
   const tasks = paths.map(
     (fullPath, index) => import_promises.default.readFile(fullPath, encoding).then((content) => ({ index, content, path: fullPath })).catch((error) => {
       throw new Error(
@@ -104,7 +104,7 @@ async function mergeParallelOrdered(paths, encoding, delineator) {
     ({ content, path: path2 }) => (delineator ? formatDelineator(delineator, path2) : "") + content
   ).join("");
 }
-async function mergeParallelUnordered(paths, encoding, delineator) {
+async function fileStrParallelUnordered(paths, encoding, delineator) {
   const results = await Promise.all(
     paths.map(async (fullPath) => {
       const content = await import_promises.default.readFile(fullPath, encoding).catch((error) => {
@@ -124,22 +124,22 @@ const Concurrency = {
   PARALLEL: "parallel",
   PARALLEL_ORDERED: "parallel-ordered"
 };
-async function merge(paths, {
+async function fileStr(paths, {
   encoding = "utf8",
   concurrency = Concurrency.SEQUENTIAL,
   delineator = ""
 } = {}) {
   if (concurrency === Concurrency.PARALLEL_ORDERED) {
-    return mergeParallelOrdered(paths, encoding, delineator);
+    return fileStrParallelOrdered(paths, encoding, delineator);
   } else if (concurrency === Concurrency.PARALLEL) {
-    return mergeParallelUnordered(paths, encoding, delineator);
+    return fileStrParallelUnordered(paths, encoding, delineator);
   } else {
-    return mergeSequential(paths, encoding, delineator);
+    return fileStrSequential(paths, encoding, delineator);
   }
 }
-var index_default = merge;
+var index_default = fileStr;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Concurrency,
-  merge
+  fileStr
 });

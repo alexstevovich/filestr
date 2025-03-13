@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { merge, Concurrency } from '../src/index.js'; // Adjust path if necessary
+import { fileStr, Concurrency } from '../src/index.js'; // Adjust path if necessary
 import path from 'path';
 import fs from 'fs/promises';
 
@@ -29,7 +29,7 @@ beforeAll(async () => {
 describe('merge()', () => {
     it('should merge files sequentially without a delineator', async () => {
         const result = (
-            await merge(files, { concurrency: Concurrency.SEQUENTIAL })
+            await fileStr(files, { concurrency: Concurrency.SEQUENTIAL })
         )
             .replace(/\r\n/g, '\n')
             .trim();
@@ -40,7 +40,7 @@ describe('merge()', () => {
 
     it('should merge files in parallel unordered', async () => {
         const result = (
-            await merge(files, { concurrency: Concurrency.PARALLEL })
+            await fileStr(files, { concurrency: Concurrency.PARALLEL })
         )
             .replace(/\r\n/g, '\n')
             .trim();
@@ -51,7 +51,7 @@ describe('merge()', () => {
 
     it('should merge files in parallel ordered', async () => {
         const result = (
-            await merge(files, { concurrency: Concurrency.PARALLEL_ORDERED })
+            await fileStr(files, { concurrency: Concurrency.PARALLEL_ORDERED })
         )
             .replace(/\r\n/g, '\n')
             .trim();
@@ -63,7 +63,7 @@ describe('merge()', () => {
     it('should merge files with a delineator using {{PATH}}', async () => {
         const delineator = '--- {{PATH}} ---';
         const result = (
-            await merge(files, {
+            await fileStr(files, {
                 concurrency: Concurrency.SEQUENTIAL,
                 delineator,
             })
@@ -84,7 +84,7 @@ describe('merge()', () => {
     it('should merge files with a delineator using {{PATH_ABS}}', async () => {
         const delineator = '--- {{PATH_ABS}} ---';
         const result = (
-            await merge(files, {
+            await fileStr(files, {
                 concurrency: Concurrency.SEQUENTIAL,
                 delineator,
             })

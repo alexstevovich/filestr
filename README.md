@@ -11,7 +11,7 @@ npm install filestr
 ## Usage
 
 ```js
-import merge from 'filestr';
+import fileStr from 'filestr';
 
 const files = [
     './test/res/test1.txt',
@@ -19,13 +19,13 @@ const files = [
     './test/res/test3.txt',
 ];
 
-const mergedContent = await merge(files);
+const mergedContent = await fileStr(files);
 console.log(mergedContent); // Outputs the merged file content as a string
 ```
 
 ## API
 
-### `merge(files, options?)`
+### `fileStr(files, options?)`
 
 Merges the content of multiple files into a single string.
 
